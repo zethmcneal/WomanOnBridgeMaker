@@ -1,0 +1,24 @@
+﻿
+<SyntaxDefinition name="C#"
+        xmlns="http://icsharpcode.net/sharpdevelop/syntaxdefinition/2008">
+
+    <!-- This is the main ruleset. -->
+    <RuleSet>
+        <Span foreground="Green" begin="//" />
+
+        <Span foreground="Red">
+            <Begin>"</Begin>
+            <End>"</End>
+            <RuleSet>
+                <!-- nested span for escape sequences -->
+                <Span begin="\\" end="." />
+            </RuleSet>
+        </Span>
+
+        <Keywords fontWeight="bold" foreground="DarkBlue">
+            <Word>Amy:</Word>
+            <Word>Player:</Word>
+        </Keywords>
+
+    </RuleSet>
+</SyntaxDefinition>
