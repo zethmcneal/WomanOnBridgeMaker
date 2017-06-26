@@ -11,7 +11,6 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Xml;
 
@@ -20,11 +19,18 @@ namespace StoryNavigationHelper
 	/// <summary>
 	/// Interaction logic for ConversationEditor.xaml
 	/// </summary>
-	public partial class ConversationEditor : UserControl
+	public partial class ConversationEditor : Window
 	{
-		public ConversationEditor()
+		private ConversationEditorViewModel viewModel;
+
+		public ConversationEditor(ConversationEditorViewModel viewModel)
 		{
 			InitializeComponent();
+			this.viewModel = viewModel;
+			this.DataContext = viewModel;
+			this.TextEditor.Text = viewModel.Text;
+			viewModel.Closed += (sender, args) => this.Close();
+
 
 			using (XmlTextReader xshd_reader = new XmlTextReader(new MemoryStream(Properties.Resources.highlighting)))
 			{
@@ -33,6 +39,11 @@ namespace StoryNavigationHelper
 			}
 
 			TextEditor.Focus();
+		}
+
+		private void TextEditor_TextChanged(object sender, System.EventArgs e)
+		{
+			this.viewModel.Text = TextEditor.Text;
 		}
 	}
 }

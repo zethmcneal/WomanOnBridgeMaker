@@ -24,11 +24,13 @@ namespace StoryNavigationHelper
     {
 		private MainWindowViewModel vm;
 
-        public MainWindow()
+        public MainWindow(MainWindowViewModel viewModel)
         {
+			if (viewModel == null) throw new ArgumentNullException(nameof(viewModel));
+
             InitializeComponent();
 
-			vm = new MainWindowViewModel();
+			vm = viewModel;
 			DataContext = vm;
 		}
     }

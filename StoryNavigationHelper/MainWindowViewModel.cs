@@ -11,6 +11,12 @@ namespace StoryNavigationHelper
 	public class MainWindowViewModel
 	{
 
+		#region Fields
+
+		private readonly StoryManager storyManager;
+
+		#endregion Fields
+
 		#region Commands
 
 		private ICommand saveAllCommand;
@@ -52,10 +58,8 @@ namespace StoryNavigationHelper
 				{
 					newConversationCommand = new DelegateCommand(o =>
 					{
-						Window w = new Window();
+						Window w = new ConversationEditor(new ConversationEditorViewModel(this.storyManager));
 						w.Owner = Application.Current.MainWindow;
-						w.WindowStartupLocation = WindowStartupLocation.CenterOwner;
-						w.Content = new ConversationEditor();
 
 						w.Show();
 					});
@@ -71,7 +75,10 @@ namespace StoryNavigationHelper
 			{
 				if (exitCommand == null)
 				{
-					exitCommand = new DelegateCommand(o => { });
+					exitCommand = new DelegateCommand(o => 
+					{
+						Application.Current.MainWindow.Close();
+					});
 				}
 
 				return exitCommand;
@@ -79,6 +86,15 @@ namespace StoryNavigationHelper
 		}
 
 		#endregion Commands
+
+		#region Constructor
+
+		public MainWindowViewModel(StoryManager storyManager)
+		{
+			this.storyManager = storyManager ?? throw new ArgumentNullException(nameof(storyManager));
+		}
+
+		#endregion Constructor
 
 	}
 }

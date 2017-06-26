@@ -61,10 +61,13 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Builder\JavaScriptFileBuilder.cs" />
     <Compile Include="MainWindowViewModel.cs" />
+    <Compile Include="StoryManager.cs" />
     <Compile Include="TextEditor\ConversationEditor.xaml.cs">
       <DependentUpon>ConversationEditor.xaml</DependentUpon>
     </Compile>
+    <Compile Include="TextEditor\ConversationEditorViewModel.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
