@@ -13,7 +13,8 @@
 			<Menu>
 				<MenuItem Header="_File">
 					<MenuItem Header="_New Conversation" Command="{Binding NewConversation}" />
-					<Separator />
+                    <MenuItem Header="New Choice" Command="{Binding NewChoice}" />
+                    <Separator />
 					<MenuItem Header="_Save All" Command="{Binding SaveAll}"/>
 					<Separator />
 					<MenuItem Header="_Exit" Command="{Binding Exit}" />

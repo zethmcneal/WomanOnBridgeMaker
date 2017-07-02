@@ -62,12 +62,20 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Builder\JavaScriptFileBuilder.cs" />
+    <Compile Include="ChoiceEditor\ChoiceEditor.xaml.cs">
+      <DependentUpon>ChoiceEditor.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ChoiceEditor\ChoiceEditorViewModel.cs" />
     <Compile Include="MainWindowViewModel.cs" />
     <Compile Include="StoryManager.cs" />
     <Compile Include="TextEditor\ConversationEditor.xaml.cs">
       <DependentUpon>ConversationEditor.xaml</DependentUpon>
     </Compile>
     <Compile Include="TextEditor\ConversationEditorViewModel.cs" />
+    <Page Include="ChoiceEditor\ChoiceEditor.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

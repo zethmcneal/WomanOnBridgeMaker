@@ -22,6 +22,7 @@ namespace StoryNavigationHelper
 		private ICommand saveAllCommand;
 		private ICommand buildProjectCommand;
 		private ICommand newConversationCommand;
+        private ICommand newChoiceCommand;
 		private ICommand exitCommand;
 
 		public ICommand SaveAll
@@ -84,6 +85,25 @@ namespace StoryNavigationHelper
 				return exitCommand;
 			}
 		}
+
+        public ICommand NewChoice
+        {
+            get
+            {
+                if (newChoiceCommand == null)
+                {
+                    newChoiceCommand = new DelegateCommand(o =>
+                    {
+                        Window w = new ChoiceEditor(new ChoiceEditorViewModel());
+                        w.Owner = Application.Current.MainWindow;
+
+                        w.ShowDialog();
+                    });
+                }
+
+                return newChoiceCommand;
+            }
+        }
 
 		#endregion Commands
 
